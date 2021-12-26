@@ -66,27 +66,27 @@ body {
 .form-changepass input[type="password"]{
   /*margin-bottom: 10px;*/
   color: black; 
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0; 
+  /*border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0; */
 }
 
 .form-changepass input[name="pass_old"] {
   /*margin-bottom: 10px;*/
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 
 }
 
-.form-changepass input[name="pass_new1"] {
-  /*margin-bottom: 10px;*/
+.form-changepass input[name="pass_new"] {
+  /*margin-bottom: 10px;
   border-radius: 0;
-
+*/
 }
 
-.form-changepass input[name="pass_new2"] {
+.form-changepass input[name="pass_conf"] {
   /*margin-bottom: 10px;*/
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .form-changepass .form-floating:focus-within {
