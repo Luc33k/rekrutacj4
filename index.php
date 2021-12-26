@@ -54,7 +54,7 @@
           <nav class="nav nav-masthead justify-content-center float-md-end">
             <a class="nav-link active ajaxTrigger" load = "changePass.php" aria-current="page" >Zmiana hasła</a>
             <a class="nav-link ajaxTrigger" load = "raport.php">Raport</a>
-            <a class="nav-link ajaxTrigger" href="#">Zestawienie</a>
+            <a class="nav-link ajaxTrigger" load = "zestawienie.php">Zestawienie</a>
             <a class="nav-link ajaxTrigger" href = "./logout.php">Wyloguj</a>
           </nav>
         </div>
