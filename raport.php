@@ -1,1 +1,3 @@
-Tu będzie raport
+<?php
+    require_once (['./config.php']);
+?>
