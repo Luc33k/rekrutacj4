@@ -1,3 +1,10 @@
-<?php
-    require_once (['./config.php']);
-?>
+<?php require_once ('./raportScript.php')?>
+
+<form action="./raportScript.php" method="post">
+    Value1: <input type="text" name = "field1" /><br/>
+    Value2: <input type="text" name = "field2" /><br/>
+    Value3: <input type="text" name = "field3" /><br/>
+    Value4: <input type="text" name = "field4" /><br/>
+    Value5: <input type="text" name = "field5" /><br/>
+    <input type="submit" />
+</form>
