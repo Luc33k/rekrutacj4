@@ -1,4 +1,5 @@
 <?php
+
     // dane logowania
     $servername = 'localhost';
     $username = 'root';

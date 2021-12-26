@@ -92,3 +92,6 @@ body {
 .form-changepass .form-floating:focus-within {
   z-index: 2;
 }
+.form-changepass label{
+  color: #333;
+}
