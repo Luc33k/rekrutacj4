@@ -27,8 +27,5 @@
             echo "<h1> Login failed. Invalid username or password.</h1>";  
         }     
 
-        public function Change_password(){
-
-        }
 
 ?>  
