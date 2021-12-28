@@ -22,6 +22,7 @@
 
     <script src="./assets/js/jquery-3.6.0.min.js"></script>
 
+
     <!-- Bootstrap core CSS -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -68,7 +69,7 @@
         <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
       </footer>
     </div>
-    
+
     <script>
       $(document).ready(function(){
         $('.ajaxTrigger').click(function(){
