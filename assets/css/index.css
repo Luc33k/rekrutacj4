@@ -72,21 +72,24 @@ body {
 
 .form-changepass input[name="pass_old"] {
   /*margin-bottom: 10px;*/
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  
 
 }
 
 .form-changepass input[name="pass_new"] {
   /*margin-bottom: 10px;
   border-radius: 0;
-*/
+
+  margin: 10px,0,10px,0;*/
+  padding: 20px;
 }
 
 .form-changepass input[name="pass_conf"] {
   /*margin-bottom: 10px;*/
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .form-changepass .form-floating:focus-within {
