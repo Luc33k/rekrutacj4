@@ -9,7 +9,7 @@
 
 <!doctype html>
 <html lang="en" class="h-100">
-  <head>
+    <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -24,7 +24,9 @@
 
     <!-- Bootstrap core CSS -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-
+    <!-- Custom styles for this template -->
+    <link href="./assets/css/index.css" rel="stylesheet">
+    
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -42,8 +44,7 @@
     </style>
 
     
-    <!-- Custom styles for this template -->
-    <link href="./assets/css/index.css" rel="stylesheet">
+    
     
   </head>
   <body class="d-flex h-100 text-center text-white bg-dark">
@@ -67,6 +68,7 @@
         <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
       </footer>
     </div>
+    
     <script>
       $(document).ready(function(){
         $('.ajaxTrigger').click(function(){
