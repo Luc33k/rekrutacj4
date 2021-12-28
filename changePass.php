@@ -56,3 +56,12 @@
     </p>
     -->
   </main>
+
+
+  <!--
+
+      zmiana przetwarzania form zmiany hasła przez jquery/ajax, bez przeładowywania na changePassScript.php
+
+      
+
+    -->
