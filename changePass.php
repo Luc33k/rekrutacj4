@@ -25,28 +25,28 @@
     </form>
     <script>  
       function validation(){  
-      var psOld = document.f2.pass_old.value;  
-      var psNew = document.f2.pass_new.value;
-      var psNewConf = document.f2.pass_conf.value;  
-      
-      if(psOld.length=="" && psNew.length=="" && psNewConf.length == "") {  
-        alert("Wypełnij pola");  
-        return false;  
-      }  
-      else{  
-        if(psOld.length=="") {  
-          alert("Pole stare hasło jest puste");  
-          return false;  
-        }   
-        if (psNew.length=="") {  
-          alert("Pole nowe hasło jest puste");  
+        var psOld = document.f2.pass_old.value;  
+        var psNew = document.f2.pass_new.value;
+        var psNewConf = document.f2.pass_conf.value;  
+        
+        if(psOld.length=="" && psNew.length=="" && psNewConf.length == "") {  
+          alert("Wypełnij pola");  
           return false;  
         }  
-        if (psNewConf.length=="") {  
-          alert("Pole potwierdź hasło jest puste");  
-          return false;  
-        }   
-      }                             
+        else{  
+          if(psOld.length=="") {  
+            alert("Pole stare hasło jest puste");  
+            return false;  
+          }   
+          if (psNew.length=="") {  
+            alert("Pole nowe hasło jest puste");  
+            return false;  
+          }  
+          if (psNewConf.length=="") {  
+            alert("Pole potwierdź hasło jest puste");  
+            return false;  
+          }   
+        }                             
       }  
     </script>  
     <!--
