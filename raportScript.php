@@ -89,8 +89,6 @@
          echo'
         </tbody>
       </table>
-              
-      
       ';
       }
     
