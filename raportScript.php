@@ -64,50 +64,33 @@
     ORDER BY zamData, grupNazwa DESC
     ");
 
-    if($dane->num_rows > 0){
-        //echo "<tr>";
-        //while($row = $produkty->fetch_assoc()){
-        //    echo "tr";
-        //    echo "id: " . $row["id"]. " id_grupa: " . $row["id_grupa"]. " Nazwa: ". $row['nazwa']. " netto: ". $row['cena_netto']. " VAT: ". $row['vat'] ;
-        //}
-        //echo"</tr>";
 
-        ?>
-        <table border="2">
+      echo"
+        <table border='2'>
         <thead>
           <tr>
             <th>Grupa</th>
             <th>Dzień</th>
-            <th>Kwota netto</th>
+            <th>Kwota Netto</th>
             <th>Kwota Brutto</th>
           </tr>
         </thead>
-        <tbody>
-          <?php
-    
+        <tbody>";
+         
             if( mysqli_num_rows( $dane )==0 ){
               echo '<tr><td colspan="4">No Rows Returned</td></tr>';
             }else{
-              #echo gettype($row['zamDate']);
-              /*echo $endDate;*/
               while( $row = mysqli_fetch_assoc( $dane )){
-                #echo gettype($endDate);
-                #echo gettype($testDate);
-                #echo 'zam data ' . $row['zamData'] . gettype($row['zamData']) . '</br>';
-                #echo gettype($begi);
-                #echo 'begi ' . $begi . gettype($begi) . '</br>';
-                #echo 'testDate ' . $testDate . gettype($testDate) . '</br>';
-                #echo 'test 2019-01-01'  . gettype('2019-01-01') . '</br>';
+
                 $brutto = $row['netto'] + ($row['netto'] * ($row['vat']/100));
                 echo "<tr><td>{$row['grupNazwa']}</td><td>{$row['zamData']}</td><td>{$row['netto']}</td><td>{$brutto}</td></tr>\n";
-                //echo ($row['vat'] * $row['netto']);
               }
               
-          ?>
+         echo'
         </tbody>
       </table>
-      <?php
+              ';
       }
-    }
+    
 
 ?>
