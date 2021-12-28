@@ -8,6 +8,7 @@
 
     // nawiązanie połączenia
     $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn->query("SET NAMES 'utf8'");
 
     //sprawdzenie połączenia
     if ($conn -> connect_error){
