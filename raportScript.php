@@ -6,8 +6,9 @@
 
     $wyniki = [];
     $wynikiWykres = [];
-    $values  =[];
-
+    $daneTemp  = [];
+    $daneWykresu = array();
+    $result = [];
     //$testDate = strval('2019-01-01');
 
     $dane = mysqli_query($conn, "SELECT 
@@ -47,27 +48,6 @@
               echo '<tr><td colspan="4">No Rows Returned</td></tr>';
             }else{
               
-/*
-              $chartRows = array();
-              $chartTable = array();
-              $chartTable['cols'] = array(
-                array('label' => 'grupNazwa', 'type' => 'string'),
-                array('label' => 'netto', 'type' => 'number')
-              );
-                  
-              foreach($dane as $d){
-                $temp = array();
-                  
-                $temp[] = array('v' => (string) $d['grupNazwa']);
-                  
-                $temp[] = array('v' => (int) $d['netto']);
-                $chartRows[] = array('c' => $temp);
-              }
-              $chartTable['rows'] = $chartRows;
-
-              $jsonTable = json_encode($chartTable);
-
-              //$wyniki[] = 'grupa' . 'data' . 'netto';*/
               while( $row = mysqli_fetch_assoc( $dane )){
 
                 $brutto = $row['netto'] + ($row['netto'] * ($row['vat']/100));
@@ -81,44 +61,135 @@
               //$wynikiWykres = array_sum( array_column($wyniki, 'Brutto'));
               //array_push(array_column($wynikiWykres, 'Netto') = array_sum(array_column($wynikiWykres, 'Netto'))));
               
-              array_push($wynikiWykres, array_column($wynikiWykres, 'Grupa'), array_sum(array_column($wynikiWykres, 'Netto')), array_sum(array_column($wynikiWykres, 'Brutto')));
-              
-
+              //array_push($wynikiWykres, array_column($wynikiWykres, 'Grupa'), array_sum(array_column($wynikiWykres, 'Netto')), array_sum(array_column($wynikiWykres, 'Brutto'))); // źle wyświetla ostatnie array
+              //foreach($wynikiWykres as $wynik){
+                //echo '<pre>'; print_r($wynik); echo '</pre>';
+              //}
+/*
               foreach ($wynikiWykres as $entry) {
 
                 // if an entry for this user id hasn't been created in the result, add this object
-                if (!isset($result[$entry->Grupa])) {
-                    $wynikiWykres[$entry->Grupa] = $entry;
+                if (!isset($daneWykresu[$entry->Grupa])) {
+                    $daneWykresu[$entry->Grupa] = $entry;
             
                 // otherwise, iterate this object and add the values of its keys to the existing entry
                 } else {
                     foreach ($entry as $key => $value) {
-                        $result[$entry->user_id]->$key = $value;
+                        $daneWykresu[$entry->Grupa]->$key = $value;
                     }
                 }
+            }*/
+            //$daneWykresu = array_merge($wynikiWykres[0], $wynikiWykres[1], $wynikiWykres[2], $wynikiWykres[3], $wynikiWykres[4], $wynikiWykres[5]);
+
+            //foreach($wynikiWykres as $key -> $item){
+              //$daneWykresu[$item['Grupa']][$key] = $item;
+            //}
+/*
+            function array_merge_recursive_custom($wynikiWykres) {
+              $processed = null;
+              foreach ($wynikiWykres as &$subArray) {
+                  if (empty($processed)) {
+                      $processed = $subArray;
+                      continue;
+                  }
+                  foreach ($subArray as $key => $value) {
+                      if (is_numeric($value)) {
+                          $subArray[$key] += $processed[$key];
+                      }
+                  }
+                  $processed = $subArray;
+              }
+              return end($wynikiWykres);
             }
+            var_dump(array_merge_recursive_custom($wyniki));*/
 
-              array_push($values, array("year" => "2013", "newbalance" => "50"));
-              array_push($values, array("year" => "2014", "newbalance" => "90"));
-              array_push($values, array("year" => "2015", "newbalance" => "120"));
-              echo '<pre>'; print_r($wynikiWykres); echo '</pre>';
-              //print_r(array_sum( array_column($wyniki, 'Brutto'))) ;
-              
-              //print_r($wynikiWykres);
-              /*
-              function converteToJson($wynikiWykres){
-                 $jsonTable = json_encode($wynikiWykres);
-                 print ($jsonTable);
-              }
-              while( $row = mysqli_fetch_assoc($dane)){
-                array_push($wynikiWykres, array('c' => array(
-                  array('v' => array_sum(array_column($wyniki, 'Netto'))), 
-                  array('v' => array_sum(array_column($wyniki, 'Brutto')))))); 
-              }
-             */
-            //print_r($wyniki);
 
-               if (count($wyniki) > 0): ?>
+            //foreach($wynikiWykres as $row){
+              //if(!isset($daneWykresu[$row['Grupa']]))
+            //}
+
+                      /*usort($wynikiWykres, function($a, $b) {
+                        return $a['Grupa'] <=> $b['Grupa'];
+                      });*/
+/*
+          foreach($wynikiWykres as $key => $value){
+            echo $wynikiWykres[$value];
+          }*/
+
+
+         /* foreach($wynikiWykres as $key => $value){
+            foreach($second as $value2){
+                if($value['id'] === $value2['id']){
+                    $first[$key]['title'] = $value2['title'];
+                }               
+            }
+        }*/
+        foreach($wynikiWykres as $values){
+          $key = $values['Grupa'];
+          $daneTemp[$key][] = $values;
+          //$daneWykresu = call_user_func_array('array_merge', $daneTemp[$key]);
+          //array_push($daneWykresu, $daneWykresu);
+          //)
+          //foreach($daneTemp[$key] as $value){
+            //$daneTemp = call_user_func_array("array_merge", $daneTemp[$key]);
+          //}
+          //foreach($daneTemp[$key] as $value){
+            //$daneWykresu = $value;
+          //}
+          //foreach($key as $value){
+            //$daneWykresu = array_merge($daneWykresu, $daneTemp);
+          //}
+          //foreach($daneTemp as $value){
+           // $daneWykresu = 
+          //}
+          //$daneTemp[$key][] = array_merge($daneTemp , $values);
+          //foreach($values as $value){
+            //$daneWykresu[$key] = array_merge($daneWykresu, $daneTemp);
+          //}
+        }
+        
+
+        $daneTemp = array_values($daneTemp);
+
+        //$daneWykresu = call_user_func_array('array_merge', $daneTemp);
+
+
+
+        foreach($daneTemp as $key => $value){
+          
+          $daneWykresu = $daneTemp[1];
+        }
+        //foreach($daneWykresu as $key => $value){
+          //echo ('działa </br>'). $value;
+        //}
+        /*foreach ($daneWykresu as $entry) {
+
+          // if an entry for this user id hasn't been created in the result, add this object
+          if (!isset($result[$entry->Grupa])) {
+              $result[$entry->Grupa] = $entry;
+      
+          // otherwise, iterate this object and add the values of its keys to the existing entry
+          } else {
+              foreach ($entry as $key => $value) {
+                  $result[$entry->Grupa]->$key = $value;
+              }
+          }
+      }*/
+        //foreach($daneWykresu as $value){
+          //$key = $value['Grupa'];
+          //$daneWykresu = call_user_func_array('array_merge', $key);
+        //}
+       
+
+        //foreach($daneTemp as $value){
+          //$daneWykresu[] = array_merge($daneWykresu, $value);
+        //}
+
+              echo '<pre>'; print_r($daneWykresu); echo '</pre>';
+
+
+
+              if (count($wyniki) > 0): ?>
                 <table border='2'>
                   <thead>
                     <tr>
