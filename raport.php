@@ -19,87 +19,79 @@
 
     </div>
 
-    <div id='chart_div'>
+    <div id='chart_div'  style="width: 500; height: 250px;">
     test
     </div>
 
 </div>
+<?php 
+//create array variable
+$values = [];
+
+//pushing some variables to the array so we can output something in this example.
+array_push($values, array("year" => "2013", "newbalance" => "50"));
+array_push($values, array("year" => "2014", "newbalance" => "90"));
+array_push($values, array("year" => "2015", "newbalance" => "120"));
+
+//counting the length of the array
+$countArrayLength = count($values);
+
+?>
 <script type="text/javascript">
 
 
-/*
+function wykres(){
+    google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawMaterial);
 
-            // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
+function drawMaterial() {
+      /*var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Grupa');
+      data.addColumn('number', 'Netto');
+      data.addColumn('number', 'Brutto');
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+      data.addRows([
+        [{v: 1000, f: '8 am'}, 1, .25],
+        [{v: 359, f: '9 am'}, 2, .5],
+        [{v: 1239, f:'10 am'}, 3, 1],
+        [{v: 800, f: '11 am'}, 4, 2.25],
+      ]);
+*/
+      var data = new google.visualization.arrayToDataTable([
+        ['Grupa', 'Netto', 'Brutto'],
+        ['A', 1000, 1200],
+        ['C',823, 1211],
+        ['D', 999, 666],
+        ['B', 901, 888]
+      ]);
 
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
+      var options = {
+        title: 'Motivation and Energy Level Throughout the Day',
+        hAxis: {
+          title: 'Raport sprzedaży',
+          //format: 'h:mm a',
+          viewWindow: {
+            //min: [7, 30, 0],
+            max: [100]
+          }
+        },
+        vAxis: {
+          title: 'Rating (scale of 1-10)'
+        }
+      };
 
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
-        ]);
-
-        // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
+      var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+      materialChart.draw(data, options);
     }
-      */
-    //wykres();
-    
-      function wykres(){
-                // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-// Set a callback to run when the Google Visualization API is loaded.
-google.charts.setOnLoadCallback(drawChart);
-
-// Callback that creates and populates a data table,
-// instantiates the pie chart, passes in the data and
-// draws it.
-function drawChart() {
-
-  // Create the data table.
-  var data = new google.visualization.DataTable();
-  data.addColumn('string', 'Topping');
-  data.addColumn('number', 'Slices');
-  data.addRows([
-    ['Mushrooms', 3],
-    ['Onions', 1],
-    ['Olives', 1],
-    ['Zucchini', 1],
-    ['Pepperoni', 2]
-  ]);
-
-  // Set chart options
-  var options = {'title':'How Much Pizza I Ate Last Night',
-                 'width':400,
-                 'height':300};
-
-  // Instantiate and draw our chart, passing in some options.
-  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-  chart.draw(data, options);
 }
 
-      }
+       
+    
+      
+    //wykres();
+    
+    //function wykres(){
+
 
     
    
@@ -153,6 +145,8 @@ function drawChart() {
                 success: function(data){
                     $("#raportContent").html(data);
                     wykres();
+                    //allert($jsonTable);
+                    
                 }
             });
 
