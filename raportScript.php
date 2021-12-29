@@ -11,6 +11,8 @@
     $result = [];
     //$testDate = strval('2019-01-01');
 
+    $i = -1;
+
     $dane = mysqli_query($conn, "SELECT 
     produkty.id AS produktID,
     produkty.id_grupa AS  produktIdGrup,
@@ -155,9 +157,16 @@
 
 
 
-        foreach($daneTemp as $key => $value){
-          
-          $daneWykresu = $daneTemp[1];
+        foreach($daneTemp as  $value){
+          $i++;
+          print_r($value[$i]['Grupa']);
+          //$daneWykresu[$i] = call_user_func_array('array_merge', $value);
+          //echo ($value[1] . '</br>');
+          //$key = array_key($value);
+          //$wartosc = key($value);
+          //echo ($wartosc) . '</br>';
+          //$daneWykresu[$key($value)] = call_user_func_array('array_merge', $value);
+          //$daneWykresu = 
         }
         //foreach($daneWykresu as $key => $value){
           //echo ('działa </br>'). $value;
