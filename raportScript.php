@@ -78,11 +78,30 @@
                 //print_r($wyniki);
               }
 
-              $wynikiWykres = '';
+              //$wynikiWykres = array_sum( array_column($wyniki, 'Brutto'));
+              //array_push(array_column($wynikiWykres, 'Netto') = array_sum(array_column($wynikiWykres, 'Netto'))));
+              
+              array_push($wynikiWykres, array_column($wynikiWykres, 'Grupa'), array_sum(array_column($wynikiWykres, 'Netto')), array_sum(array_column($wynikiWykres, 'Brutto')));
+              
+
+              foreach ($wynikiWykres as $entry) {
+
+                // if an entry for this user id hasn't been created in the result, add this object
+                if (!isset($result[$entry->Grupa])) {
+                    $wynikiWykres[$entry->Grupa] = $entry;
+            
+                // otherwise, iterate this object and add the values of its keys to the existing entry
+                } else {
+                    foreach ($entry as $key => $value) {
+                        $result[$entry->user_id]->$key = $value;
+                    }
+                }
+            }
+
               array_push($values, array("year" => "2013", "newbalance" => "50"));
-array_push($values, array("year" => "2014", "newbalance" => "90"));
-array_push($values, array("year" => "2015", "newbalance" => "120"));
-              echo '<pre>'; print_r($wyniki); echo '</pre>';
+              array_push($values, array("year" => "2014", "newbalance" => "90"));
+              array_push($values, array("year" => "2015", "newbalance" => "120"));
+              echo '<pre>'; print_r($wynikiWykres); echo '</pre>';
               //print_r(array_sum( array_column($wyniki, 'Brutto'))) ;
               
               //print_r($wynikiWykres);
