@@ -159,7 +159,14 @@
 
         foreach($daneTemp as  $value){
           $i++;
-          print_r($value[$i]['Grupa']);
+          //if(in_array($value[$i]['Grupa'] ,$daneTemp)){
+            //echo ('tak');
+          //};
+          if($value[$i]['Grupa'] != null){
+            print_r($value[$i]['Grupa']);
+            echo ('działa');
+          }
+          //print_r($value[$i]['Grupa']);
           //$daneWykresu[$i] = call_user_func_array('array_merge', $value);
           //echo ($value[1] . '</br>');
           //$key = array_key($value);
@@ -194,7 +201,7 @@
           //$daneWykresu[] = array_merge($daneWykresu, $value);
         //}
 
-              echo '<pre>'; print_r($daneWykresu); echo '</pre>';
+              echo '<pre>'; print_r($daneTemp); echo '</pre>';
 
 
 
