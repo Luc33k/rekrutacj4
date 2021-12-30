@@ -40,11 +40,11 @@ $countArrayLength = count($values);
 <script type="text/javascript">
 
 
-function wykres(){
+function wykres(wyk){
     google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawMaterial);
 
-function drawMaterial() {
+function drawMaterial(wyk) {
       /*var data = new google.visualization.DataTable();
       data.addColumn('number', 'Grupa');
       data.addColumn('number', 'Netto');
@@ -57,13 +57,7 @@ function drawMaterial() {
         [{v: 800, f: '11 am'}, 4, 2.25],
       ]);
 */
-      var data = new google.visualization.arrayToDataTable([
-        ['Grupa', 'Netto', 'Brutto'],
-        ['A', 1000, 1200],
-        ['C',823, 1211],
-        ['D', 999, 666],
-        ['B', 901, 888]
-      ]);
+      var data = new google.visualization.arrayToDataTable(wyk);
 
       var options = {
         title: 'Motivation and Energy Level Throughout the Day',
@@ -144,9 +138,19 @@ function drawMaterial() {
                 data: serializedData,
                 success: function(data){
                     $("#raportContent").html(data);
-                    wykres();
+                    //wykres();
                     //allert($jsonTable);
                     
+                }
+            });
+            Request = $.ajax({
+                type:'GET',
+                url: 'raportScript.php?function=',
+                data: 'json',
+                success: function (data){
+                    //alert data;
+                //console.log('success',data);
+                    wykres(data);
                 }
             });
 
