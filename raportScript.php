@@ -9,6 +9,7 @@
     $daneTemp  = [];
     $daneWykresu = array();
     $result = [];
+    $values = [];
     //$testDate = strval('2019-01-01');
 
     $i = -1;
@@ -76,36 +77,7 @@
         //echo (json_encode($daneTemp[0]));
 
 
-        //$daneWykresu = array_sum(array_column($daneTemp, 'Grupa'));
 
-
-        /*
-        foreach ($daneTemp as $k=>$subArray) {
-          foreach ($subArray as $id=>$value) {
-            $result[$id]+=$value;
-          }
-        }
-        
-        foreach($daneTemp as $key => $value){
-          //echo ('tak</br>');
-          $k = $value['Grupa'];
-          $value = array_merge($value, array($k));
-          //print_r( json_encode($value));
-        }
-
-        foreach ($daneTemp as $key => $entry) {
-          $k = $entry['Grupa'];
-          // if an entry for this user id hasn't been created in the result, add this object
-          if (!isset($result[$k])) {
-              $result[$k] = $entry;
-      
-          // otherwise, iterate this object and add the values of its keys to the existing entry
-          } else {
-              foreach ($entry as $key => $value) {
-                  $result[$entry->user_id]->$key = $value;
-              }
-          }
-      }*/
 
       $sum = array_reduce($daneTemp, function ($a, $b) {
         //isset($a[$b['Grupa']]) ? $a[$b['Grupa']]['Netto'] += $b['Netto'] : $a[$b['Grupa']] = $b;  
@@ -113,8 +85,18 @@
         return $a;
     });
 
-              echo '<pre>'; print_r($sum); echo '</pre>';
+    $values = array_values($sum);
 
+
+
+    //$values = call_user_func_array('array_merge', $daneTemp);
+
+    //array_push($values, array("year" => "2013", "newbalance" => "50"));
+    //array_push($values, array("year" => "2014", "newbalance" => "90"));
+    //array_push($values, array("year" => "2015", "newbalance" => "120"));
+
+              //echo '<pre>'; print_r($values); echo '</pre>';
+              //print json_encode($values);
 
 
               if (count($wyniki) > 0): ?>
