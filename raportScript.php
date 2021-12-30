@@ -193,6 +193,11 @@
 
         $daneTemp = array_values($daneTemp);
         echo (json_encode($daneTemp[0]));
+
+
+        $daneWykresu = $daneTemp[0];
+
+        //$result = call_user_func_array('array_merge', $daneTemp[0]);
           //print_r($value[$i]['Grupa']);
           //$daneWykresu[$i] = call_user_func_array('array_merge', $value);
           //echo ($value[1] . '</br>');
@@ -228,7 +233,7 @@
           //$daneWykresu[] = array_merge($daneWykresu, $value);
         //}
 
-              echo '<pre>'; print_r($daneTemp); echo '</pre>';
+              echo '<pre>'; print_r($daneTemp[0]); echo '</pre>';
 
 
 
