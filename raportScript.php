@@ -151,13 +151,13 @@
         }
         
 
-        $daneTemp = array_values($daneTemp);
+       // $daneTemp = array_values($daneTemp);
 
         //$daneWykresu = call_user_func_array('array_merge', $daneTemp);
 
 
 
-        foreach($daneTemp as  $value){
+        /*foreach($daneTemp as  $value){
           $i++;
           //if(in_array($value[$i]['Grupa'] ,$daneTemp)){
             //echo ('tak');
@@ -165,7 +165,34 @@
           if($value[$i]['Grupa'] != null){
             print_r($value[$i]['Grupa']);
             echo ('działa');
-          }
+          }*/
+
+
+
+
+
+
+
+          /*
+          foreach ($daneTemp as $entry) {
+            $i++;
+            // if an entry for this user id hasn't been created in the result, add this object
+            if (in_array($daneWykresu, $entry[$i]['Grupa'])) {
+                $daneWykresu[$entry->Grupa] = $entry;
+        
+            // otherwise, iterate this object and add the values of its keys to the existing entry
+            } else {
+                foreach ($daneWykresu as $key => $value) {
+                    $daneWykresu[$entry-> Grupa]->$key = $value;
+                }
+            }
+        }
+*/
+
+
+
+        $daneTemp = array_values($daneTemp);
+        echo (json_encode($daneTemp[0]));
           //print_r($value[$i]['Grupa']);
           //$daneWykresu[$i] = call_user_func_array('array_merge', $value);
           //echo ($value[1] . '</br>');
@@ -174,7 +201,7 @@
           //echo ($wartosc) . '</br>';
           //$daneWykresu[$key($value)] = call_user_func_array('array_merge', $value);
           //$daneWykresu = 
-        }
+        //}
         //foreach($daneWykresu as $key => $value){
           //echo ('działa </br>'). $value;
         //}
