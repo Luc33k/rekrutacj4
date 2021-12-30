@@ -247,3 +247,34 @@
         //foreach($daneTemp as $value){
           //$daneWykresu[] = array_merge($daneWykresu, $value);
         //}
+
+        //$daneWykresu = array_sum(array_column($daneTemp, 'Grupa'));
+
+
+/*
+foreach ($daneTemp as $k=>$subArray) {
+  foreach ($subArray as $id=>$value) {
+    $result[$id]+=$value;
+  }
+}
+
+foreach($daneTemp as $key => $value){
+  //echo ('tak</br>');
+  $k = $value['Grupa'];
+  $value = array_merge($value, array($k));
+  //print_r( json_encode($value));
+}
+
+foreach ($daneTemp as $key => $entry) {
+  $k = $entry['Grupa'];
+  // if an entry for this user id hasn't been created in the result, add this object
+  if (!isset($result[$k])) {
+      $result[$k] = $entry;
+
+  // otherwise, iterate this object and add the values of its keys to the existing entry
+  } else {
+      foreach ($entry as $key => $value) {
+          $result[$entry->user_id]->$key = $value;
+      }
+  }
+}*/
