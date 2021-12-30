@@ -14,13 +14,22 @@
     $result = mysqli_query($conn, "SELECT password FROM users WHERE user = '$user'");
     //$sql = ;
 
-   
+    //print_r ($result);
+    //print_r ($passwordOld);
+    
     if($result == $passwordOld){
         $sql=mysqli_query($conn, "UPDATE users SET password='$passwordNew' WHERE user='$user'");
-    
+        echo '<script language="javascript">';
+        echo 'alert("Hasło zmienione")';
+        echo '</script>';
     }
     else{
-        echo "old password is wrong";
+        //echo ('alert("nie ok")');
+        header('Location: index.php');
+        echo '<script language="text/javascript">';
+        echo 'alert("Błedne hasło")';
+        echo '</script>';
+        //echo "old password is wrong";
     }
 
 ?>

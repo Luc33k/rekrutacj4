@@ -56,6 +56,7 @@
                 $brutto = $row['netto'] + ($row['netto'] * ($row['vat']/100));
                 //echo "<tr><td>{$row['grupNazwa']}</td><td>{$row['zamData']}</td><td>{$row['netto']}</td><td>{$brutto}</td></tr>\n";
                 array_push($wyniki, array('Grupa' => $row['grupNazwa'], 'Data' => $row['zamData'], 'Netto' => $row['netto'], 'Brutto' => $brutto));
+                //array_push($wyniki, array($row['grupNazwa'], $row['zamData'], $row['netto'], $brutto));
                 array_push($wynikiWykres, array('Grupa' => $row['grupNazwa'], 'Netto' => $row['netto'], 'Brutto' => $brutto));
                 //$wyniki[] = $row['grupNazwa'] . $row['zamData'] . $row['netto'];
                 //print_r($wyniki);
@@ -87,8 +88,45 @@
 
     $values = array_values($sum);
 
+    $rows = array();
+    $table = array();
+    $table['cols'] = array(
 
+      // Labels for your chart, these represent the column titles.
+      /* 
+          note that one column is in "string" format and another one is in "number" format 
+          as pie chart only required "numbers" for calculating percentage 
+          and string will be used for Slice title
+      */
 
+      array('label' => 'Weekly Task', 'type' => 'string'),
+      array('label' => 'Percentage', 'type' => 'number')
+
+    );
+    /* Extract the information from $result */
+    foreach($values as $r) {
+
+      $temp = array();
+
+      // The following line will be used to slice the Pie chart
+
+      $temp[] = array('v' => (string) $r['Grupa']); 
+
+      // Values of the each slice
+
+      $temp[] = array('v' => (int) $r['Netto']); 
+      $rows[] = array('c' => $temp);
+    }
+
+$table['rows'] = $rows;
+
+// convert data into JSON format
+$jsonTable = json_encode($table);
+//print_r( json_encode( $table['rows']));
+
+//$jsonTable1 = json_encode($wyniki);
+//echo $jsonTable1;
+//echo $jsonTable;
     //$values = call_user_func_array('array_merge', $daneTemp);
 
     //array_push($values, array("year" => "2013", "newbalance" => "50"));
@@ -97,11 +135,11 @@
 
               //echo '<pre>'; print_r($values); echo '</pre>';
               //print json_encode($values);
-              echo (json_encode($values));
+              //echo (json_encode($values));
+?>
 
-
-              if (count($wyniki) > 0): ?>
-                <table border='2'>
+              <?php if (count($wyniki) > 0): ?>
+                <table border="2" id="raport">
                   <thead>
                     <tr>
                       <th><?php echo implode('</th><th>', array_keys(current($wyniki))); ?></th>
@@ -112,9 +150,17 @@
                     <tr>
                       <td><?php echo implode('</td><td>', $row); ?></td>
                     </tr>
+                    
                 <?php endforeach; ?>
+                  <tr>
+                    <td></td>
+                    <td>Suma: </td>
+                    <td> <?php echo(array_sum(array_column($wyniki, 'Netto'))); ?></td>
+                    <td><?php echo(array_sum(array_column($wyniki, 'Brutto'))); ?></td>
+                  </tr>
                   </tbody>
                 </table>
+                
                 <?php endif; 
 
             }

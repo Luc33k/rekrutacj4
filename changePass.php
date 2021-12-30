@@ -1,7 +1,7 @@
   
     <main class="form-changepass">
     
-    <form  method="POST" name= "f2" onsubmit = "return validation()" action="./changePass.php">
+    <form  method="POST" name= "f2" onsubmit = "return validation()" action="./changePassScript.php">
         
         <h1 class="h3 mb-3 fw-normal">Tutaj możesz zmienić swoje hasło!</h1>
 
