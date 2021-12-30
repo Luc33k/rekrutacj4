@@ -97,6 +97,7 @@
 
               //echo '<pre>'; print_r($values); echo '</pre>';
               //print json_encode($values);
+              echo (json_encode($values));
 
 
               if (count($wyniki) > 0): ?>
