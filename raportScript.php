@@ -64,176 +64,56 @@
               //array_push(array_column($wynikiWykres, 'Netto') = array_sum(array_column($wynikiWykres, 'Netto'))));
               
               //array_push($wynikiWykres, array_column($wynikiWykres, 'Grupa'), array_sum(array_column($wynikiWykres, 'Netto')), array_sum(array_column($wynikiWykres, 'Brutto'))); // źle wyświetla ostatnie array
-              //foreach($wynikiWykres as $wynik){
-                //echo '<pre>'; print_r($wynik); echo '</pre>';
-              //}
-/*
-              foreach ($wynikiWykres as $entry) {
-
-                // if an entry for this user id hasn't been created in the result, add this object
-                if (!isset($daneWykresu[$entry->Grupa])) {
-                    $daneWykresu[$entry->Grupa] = $entry;
-            
-                // otherwise, iterate this object and add the values of its keys to the existing entry
-                } else {
-                    foreach ($entry as $key => $value) {
-                        $daneWykresu[$entry->Grupa]->$key = $value;
-                    }
-                }
-            }*/
-            //$daneWykresu = array_merge($wynikiWykres[0], $wynikiWykres[1], $wynikiWykres[2], $wynikiWykres[3], $wynikiWykres[4], $wynikiWykres[5]);
-
-            //foreach($wynikiWykres as $key -> $item){
-              //$daneWykresu[$item['Grupa']][$key] = $item;
-            //}
-/*
-            function array_merge_recursive_custom($wynikiWykres) {
-              $processed = null;
-              foreach ($wynikiWykres as &$subArray) {
-                  if (empty($processed)) {
-                      $processed = $subArray;
-                      continue;
-                  }
-                  foreach ($subArray as $key => $value) {
-                      if (is_numeric($value)) {
-                          $subArray[$key] += $processed[$key];
-                      }
-                  }
-                  $processed = $subArray;
-              }
-              return end($wynikiWykres);
-            }
-            var_dump(array_merge_recursive_custom($wyniki));*/
 
 
-            //foreach($wynikiWykres as $row){
-              //if(!isset($daneWykresu[$row['Grupa']]))
-            //}
 
                       /*usort($wynikiWykres, function($a, $b) {
                         return $a['Grupa'] <=> $b['Grupa'];
                       });*/
-/*
-          foreach($wynikiWykres as $key => $value){
-            echo $wynikiWykres[$value];
-          }*/
 
 
-         /* foreach($wynikiWykres as $key => $value){
-            foreach($second as $value2){
-                if($value['id'] === $value2['id']){
-                    $first[$key]['title'] = $value2['title'];
-                }               
-            }
-        }*/
-        foreach($wynikiWykres as $values){
-          $key = $values['Grupa'];
-          $daneTemp[$key][] = $values;
-          //$daneWykresu = call_user_func_array('array_merge', $daneTemp[$key]);
-          //array_push($daneWykresu, $daneWykresu);
-          //)
-          //foreach($daneTemp[$key] as $value){
-            //$daneTemp = call_user_func_array("array_merge", $daneTemp[$key]);
-          //}
-          //foreach($daneTemp[$key] as $value){
-            //$daneWykresu = $value;
-          //}
-          //foreach($key as $value){
-            //$daneWykresu = array_merge($daneWykresu, $daneTemp);
-          //}
-          //foreach($daneTemp as $value){
-           // $daneWykresu = 
-          //}
-          //$daneTemp[$key][] = array_merge($daneTemp , $values);
-          //foreach($values as $value){
-            //$daneWykresu[$key] = array_merge($daneWykresu, $daneTemp);
-          //}
+        $daneTemp = array_values($wynikiWykres);
+        //echo (json_encode($daneTemp[0]));
+
+
+        //$daneWykresu = array_sum(array_column($daneTemp, 'Grupa'));
+
+
+        /*
+        foreach ($daneTemp as $k=>$subArray) {
+          foreach ($subArray as $id=>$value) {
+            $result[$id]+=$value;
+          }
         }
         
-
-       // $daneTemp = array_values($daneTemp);
-
-        //$daneWykresu = call_user_func_array('array_merge', $daneTemp);
-
-
-
-        /*foreach($daneTemp as  $value){
-          $i++;
-          //if(in_array($value[$i]['Grupa'] ,$daneTemp)){
-            //echo ('tak');
-          //};
-          if($value[$i]['Grupa'] != null){
-            print_r($value[$i]['Grupa']);
-            echo ('działa');
-          }*/
-
-
-
-
-
-
-
-          /*
-          foreach ($daneTemp as $entry) {
-            $i++;
-            // if an entry for this user id hasn't been created in the result, add this object
-            if (in_array($daneWykresu, $entry[$i]['Grupa'])) {
-                $daneWykresu[$entry->Grupa] = $entry;
-        
-            // otherwise, iterate this object and add the values of its keys to the existing entry
-            } else {
-                foreach ($daneWykresu as $key => $value) {
-                    $daneWykresu[$entry-> Grupa]->$key = $value;
-                }
-            }
+        foreach($daneTemp as $key => $value){
+          //echo ('tak</br>');
+          $k = $value['Grupa'];
+          $value = array_merge($value, array($k));
+          //print_r( json_encode($value));
         }
-*/
 
-
-
-        $daneTemp = array_values($daneTemp);
-        echo (json_encode($daneTemp[0]));
-
-
-        $daneWykresu = $daneTemp[0];
-
-        //$result = call_user_func_array('array_merge', $daneTemp[0]);
-          //print_r($value[$i]['Grupa']);
-          //$daneWykresu[$i] = call_user_func_array('array_merge', $value);
-          //echo ($value[1] . '</br>');
-          //$key = array_key($value);
-          //$wartosc = key($value);
-          //echo ($wartosc) . '</br>';
-          //$daneWykresu[$key($value)] = call_user_func_array('array_merge', $value);
-          //$daneWykresu = 
-        //}
-        //foreach($daneWykresu as $key => $value){
-          //echo ('działa </br>'). $value;
-        //}
-        /*foreach ($daneWykresu as $entry) {
-
+        foreach ($daneTemp as $key => $entry) {
+          $k = $entry['Grupa'];
           // if an entry for this user id hasn't been created in the result, add this object
-          if (!isset($result[$entry->Grupa])) {
-              $result[$entry->Grupa] = $entry;
+          if (!isset($result[$k])) {
+              $result[$k] = $entry;
       
           // otherwise, iterate this object and add the values of its keys to the existing entry
           } else {
               foreach ($entry as $key => $value) {
-                  $result[$entry->Grupa]->$key = $value;
+                  $result[$entry->user_id]->$key = $value;
               }
           }
       }*/
-        //foreach($daneWykresu as $value){
-          //$key = $value['Grupa'];
-          //$daneWykresu = call_user_func_array('array_merge', $key);
-        //}
-       
 
-        //foreach($daneTemp as $value){
-          //$daneWykresu[] = array_merge($daneWykresu, $value);
-        //}
+      $sum = array_reduce($daneTemp, function ($a, $b) {
+        //isset($a[$b['Grupa']]) ? $a[$b['Grupa']]['Netto'] += $b['Netto'] : $a[$b['Grupa']] = $b;  
+        isset($a[$b['Grupa']]) ? $a[$b['Grupa']]['Netto'] += $b['Netto'] and $a[$b['Grupa']]['Brutto'] += $b['Brutto'] : $a[$b['Grupa']] = $b;  
+        return $a;
+    });
 
-              echo '<pre>'; print_r($daneTemp[0]); echo '</pre>';
+              echo '<pre>'; print_r($sum); echo '</pre>';
 
 
 
