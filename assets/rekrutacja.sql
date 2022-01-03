@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Czas generowania: 26 Gru 2021, 02:11
--- Wersja serwera: 10.4.13-MariaDB
--- Wersja PHP: 7.4.8
+-- Host: 127.0.0.1
+-- Czas generowania: 04 Sty 2022, 00:41
+-- Wersja serwera: 10.4.22-MariaDB
+-- Wersja PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -98,7 +98,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user`, `password`) VALUES
-(1, 'admin', 'qwerty');
+(1, 'admin', 'bd462d5d7e7d5f8416515c6b0f3ed640');
 
 -- --------------------------------------------------------
 
@@ -54390,7 +54390,7 @@ ALTER TABLE `zamowienia`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT dla zrzuconych tabel
 --
 
 --

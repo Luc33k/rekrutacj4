@@ -7,7 +7,8 @@
       
         //zabezpieczenie przed mysqli injection  
         $username = stripcslashes($username);  
-        $password = stripcslashes($password);  
+        $password = stripcslashes($password); 
+        $password = md5($password); 
         $username = mysqli_real_escape_string($conn, $username);  
         $password = mysqli_real_escape_string($conn, $password);  
       

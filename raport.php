@@ -1,130 +1,116 @@
-<head>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+<?php 
+  session_start();
+  //include ("authentication.php");
+  if(!isset($_SESSION['username'])){
+    header('location: login.php');
+    exit();
+  }
+?>
 
-</head>
-<div class = "raport">
-    <form id="formRaport" >
+<!doctype html>
+<html lang="pl" class="h-100">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Raport</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./assets/css/index.css" rel="stylesheet">
+    
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    
+    
+  </head>
+  <body class="d-flex h-100 text-center text-dark bg-light">
+    
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto text-dark">
+        <div>
+          <h3 class="float-md-start mb-0 text-dark">Witaj: <?php echo $_SESSION["username"]?> </h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link text-dark" href = "index.php" aria-current="page" >Zmiana hasła</a>
+            <a class="nav-link active text-dark" href = "raport.php">Raport</a>
+            <a class="nav-link text-dark" href = "zestawienie.php">Zestawienie</a>
+            <a class="nav-link text-dark" href = "logout.php">Wyloguj</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+
+    <!--<form id="formRaport" >
+      <div class="form-group">
         <label for="start">Od:</label>
-        <input type="date" id="start" name="raport_start"
+        <div class="col-sm-10">
+            <input type="date" id="start" name="raport_start"
             value="2019-07-22"
             min="2019-01-01" max="2021-11-24">
-        <label for="start">Do:</label>
+        </div>
+      </div>
 
-        <input type="date" id="end" name="raport_end"
+      <div class="form-group">
+        <label for="end">Do:</label>
+        <div class="col-sm-5">
+            <input type="date" id="end" name="raport_end"
             value="2019-07-22"
             min="2019-01-01" max="2021-11-24">
+        </div> 
+      </div>
+       
         <button class="w-50 btn btn-md btn-primary ajaxTrigger" type="submit" value="Send" id="buttonSubmit" name="buttonSubmit">Generuj raport</button>
-    </form>
+    </form>-->
+
+    <form id="formRaport">
+      <div class="form-group row">
+        <label for="start" class="col-sm-2 col-form-label">Od:</label>
+        <div class="col-sm-10">
+          <input type="date" id="start" name="raport_start" class="form-control" value="2019-07-22" min="2019-01-01" max="2021-11-24">
+        </div>
+      </div>
+      <div class="form-group row " style="padding-top: 15px">
+        <label for="end" class="col-sm-2 col-form-label">Do:</label>
+        <div class="col-sm-10">
+          <input type="date" id="end" name="raport_end" class="form-control" value="2019-07-22" min="2019-01-01" max="2021-11-24">
+        </div>
+      </div>
+      <button type="submit" class="w-50 btn btn-primary">Raport</button>
+  </form>
 
     <div id="raportContent">
 
     </div>
 
-    <div id='chart_div'  style="width: 500; height: 250px;"></div>
 
-</div>
-<?php 
-//create array variable
-$values = [];
 
-//pushing some variables to the array so we can output something in this example.
-array_push($values, array("year" => "2013", "newbalance" => "50"));
-array_push($values, array("year" => "2014", "newbalance" => "90"));
-array_push($values, array("year" => "2015", "newbalance" => "120"));
 
-//counting the length of the array
-$countArrayLength = count($values);
+</main>
 
-$wartosci = array(
-    array('Grupa', 'Netto', 'Brutto'),
-    array('A', 123, 500),
-    array('B', 250, 600),
-    array('C', 300, 480),
-);
-
-$wartoscJson = json_encode($wartosci);
-//echo $wartoscJson;
-
-?>
 <script type="text/javascript">
 
-
-function wykres(){
-    google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawMultSeries);
-
-function drawMultSeries() {
-      var data = new google.visualization.arrayToDataTable(<?php echo $wartoscJson; ?>);
-      /*data.addColumn('number', 'Time of Day');
-      data.addColumn('number', 'Netto');
-      data.addColumn('number', 'Brutto');
-
-      data.addRows([
-        [{v: 8, f: '8 am'}, 1, .25],
-        [{v: 9, f: '9 am'}, 2, .5],
-        [{v: 10, f:'10 am'}, 3, 1],
-        [{v: 11, f: '11 am'}, 4, 2.25],
-        [{v: 12, f: '12 pm'}, 5, 2.25],
-        [{v: 13, f: '1 pm'}, 6, 3],
-      ]);
-        */
-      var options = {
-        title: 'Motivation and Energy Level Throughout the Day',
-        hAxis: {
-          title: 'Grupa',
-          //format: 'h:mm a',
-          viewWindow: {
-            //min: [7, 30, 0],
-            //max: [17, 30, 0]
-          }
-        },
-        vAxis: {
-          title: 'Kwota'
-        }
-      };
-
-      var chart = new google.visualization.ColumnChart(
-        document.getElementById('chart_div'));
-
-      chart.draw(data, options);
-    }
-}
-       
-    
-      
-    //wykres();
-    
-    //function wykres(){
-
-
-    
-   
-    //alert('test');
-
-
-
-/*
-
-    $(document).ready(function(){
-        var values = $(this).serialize();
-
-        $.ajax({
-            url: "raportScript.php",
-            type: "get",
-            data: values,
-            success: function (){
-
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-           console.log(textStatus, errorThrown);
-        }
-        })
-    });
-
-
-
-
-*/
     $(document).ready(function(){
         var request;
         $("#formRaport").submit(function(event){
@@ -147,23 +133,10 @@ function drawMultSeries() {
                 type: "GET",
                 data: serializedData,
                 success: function(data){
-                    $("#raportContent").html(data);
-                    //wykres();
-                    //allert($jsonTable);
-                    
+                    $("#raportContent").html(data); 
                 }
             });
-            /*
-            Request = $.ajax({
-                type:'GET',
-                url: 'raportScript.php?function=',
-                data: 'json',
-                success: function (data){
-                    //alert data;
-                //console.log('success',data);
-                    wykres(data);
-                }
-            });*/
+
 
             request.done(function (response, textStatus, jqXHR){
             // Log a message to the console
@@ -229,7 +202,13 @@ function drawMultSeries() {
         });
       });*/
     </script>
+  
+
+      <footer class="mt-auto text-white-50">
+        <p class="text-dark">Aplikacja do zmiany hasła, wyświetlenia raportu oraz zestawienia zamówień.</p>
+      </footer>
+    </div>
 
 
-<?# require_once ('./raportScript.php')?>
-
+  </body>
+</html>

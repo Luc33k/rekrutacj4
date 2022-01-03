@@ -1,4 +1,6 @@
-  
+    <?php
+    include_once ('changePassScript.php');
+    ?>
     <main class="form-changepass">
     
     <form  method="POST" name= "f2" onsubmit = "return validation()" action="./changePassScript.php">

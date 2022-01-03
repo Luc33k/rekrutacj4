@@ -1,0 +1,66 @@
+if (count($result) > 0): ?>
+                <table class="table" id="raport">
+                  <thead>
+                    <tr>
+                      <th><?php echo implode('</th><th>', array_keys(current($wyniki))); ?></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                <?php foreach ($wyniki as $row): array_map('htmlentities', $row); ?>
+                    <tr>
+                      <td><?php echo implode('</td><td>', $row); ?></td>
+                    </tr>
+                    
+                <?php endforeach; ?>
+                  <tr>
+                    
+                    <td colspan="2">Suma: </td>
+                    <td> <?php echo(array_sum(array_column($wyniki, 'Netto'))) . ' zł'; ?></td>
+                    <td><?php echo(array_sum(array_column($wyniki, 'Brutto'))) . ' zł'; ?></td>
+                  </tr>
+                  </tbody>
+                </table>
+                
+                <?php endif; 
+
+        ?>
+            <table class="table table-bordered" id="raport">
+            <thead>
+                <tr>
+                    <th rowspan="4">Grupa</th>
+                </tr>
+                <tr>
+                    <th colspan="6">Lata</th>
+                </tr>
+                <tr>
+                    <th colspan="2">2019</th>
+                    <th colspan="2">2020</th>
+                    <th colspan="2">2021</th>
+                </tr>
+                <tr>
+                    <th>Netto</th>
+                    <th>Brutto</th>
+                    <th>Netto</th>
+                    <th>Brutto</th>
+                    <th>Netto</th>
+                    <th>Brutto</th>
+                </tr> 
+            </thead>
+            <tbody>
+                
+                <?php foreach ($result as $row): array_map('htmlentities', $row); ?>
+                <tr>
+                      <?php echo implode('</td><td>', $row); ?>
+                    </tr>
+                <?php endforeach ?>
+                <tr>  
+                    <td>Suma: </td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <?php
+            }
+            
+            ?>
