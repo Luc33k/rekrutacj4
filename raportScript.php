@@ -37,15 +37,7 @@
                 $brutto = $row['netto'] + ($row['netto'] * ($row['vat']/100));
 
                 array_push($wyniki, array('Grupa' => $row['grupNazwa'], 'Data' => $row['zamData'], 'Netto' => $row['netto'], 'Brutto' => $brutto));
-
-                //array_push($wynikiWykres, array('Grupa' => $row['grupNazwa'], 'Netto' => $row['netto'], 'Brutto' => $brutto));
-
               }
-
-
-
-
-              print_r($wyniki);
 
                if (count($wyniki) > 0): ?>
                 <table class="table" id="raport">
