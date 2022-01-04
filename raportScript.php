@@ -28,42 +28,37 @@
 
 
          
-            if( mysqli_num_rows( $dane )==0 ){
-              echo '<tr><td colspan="4">No Rows Returned</td></tr>';
-            }else{
-              
-              while( $row = mysqli_fetch_assoc( $dane )){
+    if( mysqli_num_rows( $dane )==0 ){
+      echo '<tr><td colspan="4">No Rows Returned</td></tr>';
+    }else{          
+      while( $row = mysqli_fetch_assoc( $dane )){
+        $brutto = $row['netto'] + ($row['netto'] * ($row['vat']/100));
 
-                $brutto = $row['netto'] + ($row['netto'] * ($row['vat']/100));
+        array_push($wyniki, array('Grupa' => $row['grupNazwa'], 'Data' => $row['zamData'], 'Netto' => $row['netto'], 'Brutto' => $brutto));
+      }
 
-                array_push($wyniki, array('Grupa' => $row['grupNazwa'], 'Data' => $row['zamData'], 'Netto' => $row['netto'], 'Brutto' => $brutto));
-              }
-
-               if (count($wyniki) > 0): ?>
-                <table class="table" id="raport">
-                  <thead>
-                    <tr>
-                      <th><?php echo implode('</th><th>', array_keys(current($wyniki))); ?></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                <?php foreach ($wyniki as $row): array_map('htmlentities', $row); ?>
-                    <tr>
-                      <td><?php echo implode('</td><td>', $row); ?></td>
-                    </tr>
+      if (count($wyniki) > 0): ?>
+        <table class="table" id="raport">
+          <thead>
+            <tr>
+              <th><?php echo implode('</th><th>', array_keys(current($wyniki))); ?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($wyniki as $row): array_map('htmlentities', $row); ?>
+              <tr>
+                <td><?php echo implode('</td><td>', $row); ?></td>
+              </tr>
                     
-                <?php endforeach; ?>
-                  <tr>
-                    
-                    <td colspan="2">Suma: </td>
-                    <td> <?php echo(array_sum(array_column($wyniki, 'Netto'))) . ' zł'; ?></td>
-                    <td><?php echo(array_sum(array_column($wyniki, 'Brutto'))) . ' zł'; ?></td>
-                  </tr>
-                  </tbody>
-                </table>
+            <?php endforeach; ?>
+              <tr>            
+                <td colspan="2">Suma: </td>
+                <td> <?php echo(array_sum(array_column($wyniki, 'Netto'))) . ' zł'; ?></td>
+                <td><?php echo(array_sum(array_column($wyniki, 'Brutto'))) . ' zł'; ?></td>
+              </tr>
+          </tbody>
+        </table>
                 
-                <?php endif; 
-
-            }
-            
-            ?>
+      <?php endif; 
+    }            
+?>
