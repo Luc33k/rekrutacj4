@@ -14,15 +14,7 @@
         $passwordConf = stripcslashes($passwordConf);
 
         $result = mysqli_query($conn, "SELECT * FROM users WHERE users.user = '$user' and users.password = '$passwordOld'");
-        //$sql = ;
-        //$row = mysqli_num_row($result);
-        //echo($row);
-        //if(mysqli_num_rows($result) == 1){
-          //  echo('ok');
-        //}
 
-        //print_r ($result);
-        //print_r ($passwordOld);
       
         if(mysqli_num_rows($result) == 1){
             if($passwordNew == $passwordConf){
@@ -39,10 +31,7 @@
             }
         }
         else{
-            //$message = "Podano błędne hasło";
             echo('błędne hasło');
-            //echo($odlPassFrmDb);
-
         }   
 
 ?>

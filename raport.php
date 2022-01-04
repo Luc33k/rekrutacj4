@@ -62,27 +62,6 @@
 
       <main>
 
-    <!--<form id="formRaport" >
-      <div class="form-group">
-        <label for="start">Od:</label>
-        <div class="col-sm-10">
-            <input type="date" id="start" name="raport_start"
-            value="2019-07-22"
-            min="2019-01-01" max="2021-11-24">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="end">Do:</label>
-        <div class="col-sm-5">
-            <input type="date" id="end" name="raport_end"
-            value="2019-07-22"
-            min="2019-01-01" max="2021-11-24">
-        </div> 
-      </div>
-       
-        <button class="w-50 btn btn-md btn-primary ajaxTrigger" type="submit" value="Send" id="buttonSubmit" name="buttonSubmit">Generuj raport</button>
-    </form>-->
 
     <form id="formRaport">
       <div class="form-group row">
@@ -162,45 +141,6 @@
         });
     });
 
-/*
-    $(document).ready(function(){
-       $("#buttonSubmit").click(function(){
-        var Serialized = $("#formRaport").serialize();
-            $.ajax({
-                type: "GET",
-                url: "raportScript.php",
-                data: "Serialized",
-                success: function(data){
-                    //$("#ajaxContent").html(respone);
-                }
-
-            });
-        }); 
-    });
-    
-
-
-    $("#submitId").click(function(){
-   var Serialized =  $("#contactForm").serialize();
-    $.ajax({
-       type: "POST",
-        url: "infoct.php",
-        data: Serialized,
-        success: function(data) {
-            //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
-            // do what ever you want with the server response
-        },
-   error: function(){
-        alert('error handing here');
-    }
-    });
-});
-      $(document).ready(function(){
-        $('.ajaxTrigger').click(function(){
-          var pageName = $(this).attr('load');
-          $('#ajaxContent').load('./'+pageName);
-        });
-      });*/
     </script>
   
 
